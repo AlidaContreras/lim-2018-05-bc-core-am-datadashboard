@@ -1,12 +1,12 @@
-window.computeUsersStats={
-  
-}
-window.sortUsers={
+window.computeUsersStats = {
 
 }
-window.filterUsers={
+window.sortUsers = {
 
 }
-window.processCohortData={
-  
+window.filterUsers = {
+
+}
+window.processCohortData = {
+
 }
