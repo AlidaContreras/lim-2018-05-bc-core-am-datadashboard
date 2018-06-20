@@ -16,7 +16,13 @@ NO SABEMOS, VAMOS A PREGUNTAR A ALE QUE ES LO QUE QUIERE VER
 NO SABEMOS, VAMOS A PREGUNTAR A ALE QUE ES LO QUE QUIERE VER
 
 ## Proceso de diseño
-Nosotras tomamos los requerimientos del ReadMe como base para nuestro primer boceto y poder mostrarselos a los usuarios potenciales.
+Nosotras tomamos los requerimientos del ReadMe como base para nuestro primer boceto y poder presentarlo a los usuarios potenciales.
+
+Este fue el primer boceto que presentamos:
+![Login](http://subefotos.com/ver/?62086d1ac33404f4eb1f571f68f5116ao.jpg)
+![1]()
+
+
 
 
 
