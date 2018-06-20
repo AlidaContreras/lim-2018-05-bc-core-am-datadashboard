@@ -19,15 +19,4 @@ NO SABEMOS, VAMOS A PREGUNTAR A ALE QUE ES LO QUE QUIERE VER
 Nosotras tomamos los requerimientos del ReadMe como base para nuestro primer boceto y poder presentarlo a los usuarios potenciales.
 
 Este fue el primer boceto que presentamos:
-![Login](http://subefotos.com/ver/?62086d1ac33404f4eb1f571f68f5116ao.jpg)
-![1]()
-
-
-
-
-
-### 
-
-
-
-
+![Login](http://thumbs.subefotos.com/31657476397cbe9b8850a81894a3839co.jpg)
