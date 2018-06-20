@@ -20,7 +20,14 @@ Nosotras tomamos los requerimientos del ReadMe como base para nuestro primer boc
 
 Este fue el primer boceto que presentamos:
 
-![Login](http://thumbs.subefotos.com/31657476397cbe9b8850a81894a3839co.jpg)
+<a href="https://ibb.co/fH97po"><img src="https://image.ibb.co/dEhhN8/1.png" alt="1" border="0"></a>
 
-![Pagina1](http://thumbs.subefotos.com/37d8ce02bb4432c911bced3b58e8ba4do.jpg)
+<a href="https://ibb.co/nohwX8"><img src="https://preview.ibb.co/mmyEKo/2.png" alt="2" border="0"></a>
+
+<a href="https://ibb.co/dJaTeo"><img src="https://preview.ibb.co/fyuzkT/3.png" alt="3" border="0"></a>
+
+<a href="https://ibb.co/fc9bX8"><img src="https://preview.ibb.co/cnOQQT/4.png" alt="4" border="0"></a>
+
+<a href="https://ibb.co/kwpzkT"><img src="https://preview.ibb.co/bZGOC8/5.png" alt="5" border="0"></a>
+
 
