@@ -1,4 +1,4 @@
-window.computeUsersStats = {
+window.computeUsersStats = (parametros)=> {
 
 }
 window.sortUsers = {
