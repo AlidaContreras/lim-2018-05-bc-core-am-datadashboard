@@ -17,6 +17,7 @@ cohortsRequest.onerror = handleError = () => {
 	console.log('Ocurrió un error');
 }
 //funcion para seleccionar cohort segun sede
+
 const cohorts=(event)=>{
 	let cohortsfilter='';
 	const data =JSON.parse(event.target.responseText);
