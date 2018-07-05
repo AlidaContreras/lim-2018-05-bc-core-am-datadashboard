@@ -1,5 +1,16 @@
-nav{
-    float: right;
-    width: 20%;
+header{
+    position: relative;
+   
 }
 
+
+
+img{
+    width: 5%;
+    height:2%;
+}
+figure{
+    width: 250%;
+    height:60%;
+    
+}
