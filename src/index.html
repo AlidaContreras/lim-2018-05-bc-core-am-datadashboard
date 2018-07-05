@@ -11,11 +11,11 @@
   <header class="header">
     <div>
       <!-- logo de laboradar -->
-      <img src="../img/LogoLaboRadar.PNG" class="LaboRadar"></img>
+      <!-- <img src="../img/LogoLaboRadar.PNG" class="LaboRadar"></img> -->
       <p>Alejandra Ramirez</p>
     </div>
-    <div>
-      <ul>
+    <div class = divBarraHorizontal>
+      <ul class=barraHorizontal>
         <li><a href="#">Peru</a></li>
         <li><a href="#">Brasil</a></li>
         <li><a href="#">Chile</a></li>
@@ -26,23 +26,14 @@
       </ul>
     </div>
   </header>
-  <aside>
-      <p>
-        <!-- COHORT -->
-      </p>
-      <p>
-        Estudiantes
-      </p>
-      <p>
-        Reportes
-      </p>
-      <p>
-        Cursos
-      </p>
-      <p>
-        Lecturas, quizzes y ejercicios
-      </p>
-  </aside>
+  <div class = divBarraVertical>
+  <ul class = ulbarraVertical>
+      <li><a>Estudiantes</a></li>
+      <li><a>Reportes</a></li>
+      <li><a>Cursos</a></li>
+      <li><a>Lecturas, quizzes y ejercicios</a></li>
+    </ul>
+  </div>
   <main>
     <div class = 'sedeSelectBox' id = sedeSelectBox>
       <select name="selectSede" id="selectSede">
@@ -54,10 +45,7 @@
         <option value="5">SPL</option>
       </select>
     </div>
-    <div class ='cohortSelectBox' id = CohortSelectBox>
-      <select name="selectCohort" id="selectCohort">
-        <option>Selecciona un cohort</option>
-      </select>
+    
 
     </div>
   </main>

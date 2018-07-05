@@ -1,31 +1,27 @@
 .header {
     position: fixed;
 }
+/* La imagen de LABORADAR */
 img{
     width: 100%;
     height:50%;
     outline: 1px solid red;
 }
-figure{
-    width: 10%;
-    display:inline-block;
-    margin: 0%;
-    border: 0%;
-    outline:1px solid green;
-}
-li{
-    /* outline: 1px solid red; */
-    width: 100px;
-    display: inline-block;
-    text-align: center;
-}
-ul{
-    /* outline: 1px solid blue; */
+
+.barraHorizontal{
+    /* outline: 10px solid blue; */
+    font-family: sans-serif;
     list-style: none;
     padding: 0;
     margin: 0;
     background: #2e2e2a;
     line-height: 250%;
+}
+.barraHorizontal li{
+    /* outline: 1px solid red; */
+    width: 100px;
+    display: inline-block;
+    text-align: center;
 }
 a{
     /* outline: 1px solid green; */
@@ -36,4 +32,26 @@ a{
 a:hover {
     background: #f9a91a;
     color:#000;
+}
+.ulbarraVertical{
+    font-family: sans-serif;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #2e2e2a;
+    line-height: 250%;
+}
+
+.barraVertical li {
+    width: 200px;
+    text-align: left;
+}
+.divBarraVertical{
+    outline: 3px solid red;
+    width: 20%;
+}
+.divBarraHorizontal{
+    outline: 5px solid green;
+    width:100%;
+    height: 100%;
 }
