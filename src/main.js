@@ -3,71 +3,80 @@ const urlCohorts = '../data/cohorts.json';
 const urlUsers = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const urlProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const selectSede = document.getElementById('selectSede');
+const inputName = document.getElementById('inputName');
+
 // const arraySedes = ['LIM', 'GDL','AQP','SCL','SPL','CDMX'];
+//_______________________________PARA FILTRAR SEGUN SEDE LIM__________________________________________________//
+// if ((idCohort).includes('lim', 0) === true) {
+// 	//aqui tengo que poner en vez de lim, la etiqueta que va a ser seleccionada en el select
+// 	selectCohorts.innerHTML += "<option value='" + idCohort + "'>" + idCohort + "</option>";
+//_______________________________PARA FILTRAR SEGUN SEDE LIM__________________________________________________//
 
 //FUNCION PARA CREAR EL SELECT DE SEDES CON UN TEMPLATE
-//funcion fetch para jalar la data de cohorts
+//__________________________funcion fetch para jalar la data de cohorts_______________________________________//
 const viewListCohorts = () => {
 	// selectCohorts.innerHTML = "";
 	let cohortsJsonArr = [];
 	fetch(urlCohorts)
 		.then(res => res.json())
-		.then(cohortsJson => {
-			cohortsJson.map((elementCohorts) => {
+		.then(cohorts => {
+			// console.log(cohorts);//cohorts es el array que contiene a todos los cohort
+			const arrayCohorts = cohorts.filter((elementCohorts) => {
 				let idCohort = elementCohorts.id;
 				if ((idCohort).includes('lim', 0) === true) {
 					//aqui tengo que poner en vez de lim, la etiqueta que va a ser seleccionada en el select
 					selectCohorts.innerHTML += "<option value='" + idCohort + "'>" + idCohort + "</option>";
+					console.log(idCohort);
 					cohortsJsonArr.push(elementCohorts);
-				}
-				})
-				
+				};
 			});
-	} 
-	viewListCohorts();
+			//______________Detectar el nombre que el usuario desea buscar_______________________________________________//
+				inputName.addEventListener('input', (event) => {
+				const valorEscrito = event.target.value;
+				const arrayNombresFiltrado = cohorts.filter((cohort) => {
+					return cohort.toUpperCase().indexOf(valorEscrito.toUpperCase()) !== -1;
+				});
+				// console.log(arrayNombresFiltrado);
+			});
+			//______________Detectar el nombre que el usuario desea buscar_______________________________________________//
+		});
+	//__________________________funcion fetch para jalar la data de cohorts_______________________________________//
+}
+
+viewListCohorts();
 
 
 //Funcion para llamar a los Users
 const viewListUsers = () => {
 	// selectUsers.innerHTML = "";
-	let usersJsonArr = [];
 	fetch(urlUsers)
 		.then(res => res.json())
-		.then(usersJson => {
-			console.log(usersJson);//UsersJson es el Json sin parsear
-			usersJson.map((users) => {
-					let roleUsers = users.role;
-					let nameUsers = users.name;
-					if(((roleUsers)==='student')===true){
-						// selectUsers.innerHTML += "<option value='" + nameUsers + "'>" + nameUsers + "</option>";
-						tableUsers.innerHTML +=`
+		.then(users => {
+			// console.log(usersJson);//UsersJson es el Json sin parsear
+			users.map((users) => {
+				let roleUsers = users.role;
+				let nameUsers = users.name;
+				if (((roleUsers) === 'student') === true) {
+					tableUsers.innerHTML += `
 						<tr>
 						<td> ${nameUsers}</td>
 						</tr>
 						`
-						usersJsonArr.push(users);
-						// console.log(typeof(elementUsers));
-						//muestro en un select a las alumnas que son estudiantes sin 6 instructores y 2 admin´s
-					}
-
+				}
 			});
 		});
 }
+
 viewListUsers();
+//llamando al json de Progress
+const viewListProgress = () => {
+	selectProgress.innerHTML = "";
+	fetch(urlProgress)
+		.then(res => res.json())
+		.then(progress => {
+			console.log(progress);
+			console.log(typeof (progress));
 
-// const viewListProgress = () => {
-// 	selectProgress.innerHTML = "";
-// 	let cohortsJsonVariable = [];
-// 	fetch(urlProgress)
-// 		.then(res => res.json())
-// 		.then(cohortsJson => {
-// 			console.log(cohortsJson);
-// 			cohortsJson.map((elementCohorts) => {
-// 			    let idCohort = elementCohorts.id;
-// 			    selectProgress.innerHTML += "<option value='" + idCohort + "'>" + idCohort + "</option>";
-// 			    cohortsJsonVariable.push(elementCohorts);
-
-// 			});
-// 		});
-// }
-// viewListUsers();
+		});
+}
+viewListProgress();
