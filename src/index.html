@@ -37,17 +37,19 @@
   <main>
       <div id = "sedeSelectBox">
           <select value = "hola" id="selectSede">
-            <option value="ali" id = "lim">LIM</option>
-            <option value="1" id = "aqp">AQP</option>
-            <option value="2" id = "scl">SCL</option>
-            <option value="3" id = "gdl">GDL</option>
-            <option value="4" id = "cdmx">CDMX</option>
-            <option value="5" id = "spl">SPL</option>
+            <option value="" disabled selected>Seleccione una Sede</option>
+            <option value="lim" id = "lim">LIM</option>
+            <option value="aqp" id = "aqp">AQP</option>
+            <option value="scl" id = "scl">SCL</option>
+            <option value="gdl" id = "gdl">GDL</option>
+            <option value="cdmx" id = "cdmx">CDMX</option>
+            <option value="spl" id = "spl">SPL</option>
           </select>
         </div>
     
       <input id="inputName" >
       <select name="selectCohorts" id="selectCohorts"></select>
+        <option value="" disabled selected>Seleccione un Cohort</option>
       <!-- <select name="selectUsers" id="selectUsers"></select> -->
       <select name="selectProgress" id="selectProgress"></select>
       <table id = tableUsers></table>
