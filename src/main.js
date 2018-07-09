@@ -7,7 +7,6 @@ const inputName = document.getElementById('inputName');
 
 //__________________________funcion fetch para jalar la data de cohorts_______________________________________//
 
-
 const viewListCohorts = () => {
 	// selectCohorts.innerHTML = "";
 	const cohortsJsonArr = [];
@@ -18,18 +17,10 @@ const viewListCohorts = () => {
 			selectSede.addEventListener('change', () => {
 				let opcionSeleccionadaDeSede = event.target.options[selectSede.selectedIndex];
 				console.log(opcionSeleccionadaDeSede.value);
-
-				// let deleteCohorts = () => {
-				// 	let listOfCohorts = document.getElementById('selectCohorts');
-				// 	let numberOfCohorts = listOfCohorts.length;
-				// 	for (i = 0; numberOfCohorts > i; i++) {
-				// 		listOfCohorts.remove(0);
-				// 	}
-
-					cohorts.filter((elementCohorts) => {
+				selectCohorts.innerHTML = "";
+						cohorts.filter((elementCohorts) => {
 						let idCohort = elementCohorts.id;
 						(elementCohorts.id).includes(opcionSeleccionadaDeSede.value);
-						
 						if ((idCohort).includes(opcionSeleccionadaDeSede.value, 0) === true) {
 							//aqui tengo que poner en vez de lim, la etiqueta que va a ser seleccionada en el select
 							selectCohorts.innerHTML += "<option value='" + idCohort + "'>" + idCohort + "</option>";
@@ -38,10 +29,10 @@ const viewListCohorts = () => {
 					})
 				// }
 			})
-			// console.log(Array.isArray(arrayDeCohorts));
 		})
-	//__________________________funcion fetch para jalar la data de cohorts_______________________________________//
+	//__________________________FIN de la funcion fetch para jalar la data de cohorts_______________________________________//
 }
+
 
 
 viewListCohorts();
@@ -66,21 +57,20 @@ const viewListUsers = () => {
 					return nameUsers ;
 				}// console.log(Array.isArray(usersEstudiantes));
 			})
-			console.log(arrayDeAlumnasFiltadas.length);
-							
+			console.log(Array.isArray(arrayDeAlumnasFiltadas));
 				//______________Detectar el nombre que el usuario desea buscar_______________________________________________//
-				inputName.addEventListener('input', (event) => {
+				inputName.addEventListener('input', (event,) => {
 				const valorEscrito = event.target.value;
 				console.log(valorEscrito);
+				console.log(arrayDeAlumnasFiltadas);
 				const alumnaBuscada = arrayDeAlumnasFiltadas.filter((nombreDeAlumna)=>{
+					console.log(nombreDeAlumna);
 					return (nombreDeAlumna.toUpperCase().indexOf(valorEscrito.toUpperCase()) !==-1);
 				});
 				console.log(alumnaBuscada);
 				// alumnaBuscada.forEach(filtrada => {
 				// 	console.log (filtrada);
-					
 				// });
-				
 				console.log(alumnaBuscada);
 				//______________Detectar el nombre que el usuario desea buscar_______________________________________________//
 			})
