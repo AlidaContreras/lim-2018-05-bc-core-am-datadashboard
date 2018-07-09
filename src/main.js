@@ -5,10 +5,9 @@ const urlProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const selectSede = document.getElementById('selectSede');
 const inputName = document.getElementById('inputName');
 
-//__________________________funcion fetch para jalar la data de cohorts_______________________________________//
+//__________________________INICIO funcion fetch para jalar la data de cohorts_______________________________________//
 
 const viewListCohorts = () => {
-	// selectCohorts.innerHTML = "";
 	const cohortsJsonArr = [];
 	fetch(urlCohorts)
 		.then(respuesta => respuesta.json())
@@ -18,65 +17,64 @@ const viewListCohorts = () => {
 				let opcionSeleccionadaDeSede = event.target.options[selectSede.selectedIndex];
 				console.log(opcionSeleccionadaDeSede.value);
 				selectCohorts.innerHTML = "";
-						cohorts.filter((elementCohorts) => {
-						let idCohort = elementCohorts.id;
-						(elementCohorts.id).includes(opcionSeleccionadaDeSede.value);
-						if ((idCohort).includes(opcionSeleccionadaDeSede.value, 0) === true) {
-							//aqui tengo que poner en vez de lim, la etiqueta que va a ser seleccionada en el select
-							selectCohorts.innerHTML += "<option value='" + idCohort + "'>" + idCohort + "</option>";
-						}
-						// deleteCohorts();
-					})
-				// }
+				cohorts.filter((elementCohorts) => {
+					let idCohort = elementCohorts.id;
+					(elementCohorts.id).includes(opcionSeleccionadaDeSede.value);
+					if ((idCohort).includes(opcionSeleccionadaDeSede.value, 0) === true) {
+						selectCohorts.innerHTML += "<option value='" + idCohort + "'>" + idCohort + "</option>";
+					}
+				})
 			})
 		})
-	//__________________________FIN de la funcion fetch para jalar la data de cohorts_______________________________________//
 }
-
-
-
 viewListCohorts();
+//__________________________FIN de la funcion fetch para jalar la data de cohorts_______________________________________//
 
-
-//Funcion para llamar a los Users
+//__________________________INICIO de la funcion fetch para jalar la data de users_______________________________________//
 const viewListUsers = () => {
 	// selectUsers.innerHTML = "";
 	fetch(urlUsers)
 		.then(res => res.json())
 		.then(users => {
-			// console.log(usersJson);//UsersJson es el Json sin parsear
-		 const arrayDeAlumnasFiltadas	= users.filter((user) => {
+			// console.log(users);//users es el array del Json parseado
+			const arrayDeNombresFiltados=users.filter((user) => {
 				let roleUsers = user.role;
-				let nameUsers = user.name;
+			 			nameUsers = user.name;
 				if (((roleUsers) === 'student') === true) {
 					tableUsers.innerHTML += `
 						<tr>
 						<td> ${nameUsers}</td>
 						</tr>
 						`
-					return nameUsers ;
-				}// console.log(Array.isArray(usersEstudiantes));
-			})
-			console.log(Array.isArray(arrayDeAlumnasFiltadas));
-				//______________Detectar el nombre que el usuario desea buscar_______________________________________________//
-				inputName.addEventListener('input', (event,) => {
+					return nameUsers;
+				}
+			});
+
+			//______________Detectar el nombre que el usuario desea buscar_______________________________________________//
+			inputName.addEventListener('input', (event) => {
 				const valorEscrito = event.target.value;
 				console.log(valorEscrito);
-				console.log(arrayDeAlumnasFiltadas);
-				const alumnaBuscada = arrayDeAlumnasFiltadas.filter((nombreDeAlumna)=>{
-					console.log(nombreDeAlumna);
-					return (nombreDeAlumna.toUpperCase().indexOf(valorEscrito.toUpperCase()) !==-1);
+				// console.log(arrayDeNombresFiltados);
+				const alumnaBuscada = arrayDeNombresFiltados.filter((user) => {
+					const nombres = user['name'];
+					
+					return (nombres.toUpperCase().indexOf(valorEscrito.toUpperCase()) !== -1);
+					
 				});
 				console.log(alumnaBuscada);
-				// alumnaBuscada.forEach(filtrada => {
-				// 	console.log (filtrada);
-				// });
-				console.log(alumnaBuscada);
-				//______________Detectar el nombre que el usuario desea buscar_______________________________________________//
+				const ulElemento = document.getElementById('listaAlumnaBuscada');
+				ulElemento.innerHTML = "";
+				alumnaBuscada.forEach((user) => {
+				ulElemento.innerHTML += `
+																<li>${user['name']}</li>
+																`
+				});
 			})
+				//______________Detectar el nombre que el usuario desea buscar_______________________________________________//
 		});
 }
 viewListUsers();
+//__________________________FIN  de la funcion fetch para jalar la data de users_______________________________________//
 
 //llamando al json de Progress
 const viewListProgress = () => {
