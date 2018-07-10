@@ -1,6 +1,5 @@
-window.computeUsersStats = (users, progress, courses) => {
-    users = users;
-    console.log(users);
+window.computeUsersStats = (users, progress, courses,cohorts) => {
+     cohorts = cohorts;
     progress = progress;
     // courses = courses;
 
@@ -37,17 +36,7 @@ computeUsersStats();
 
 // }
 window.processCohortData = (option) => {
-    let option = {
-        cohort: cohort,
-        cohortData: {
-            users: users,
-            progress: progress
-        }
-        // orderBy:,
-        // orderDirection:,
-        // search:,
-
-    }
+   
 
 
 }
