@@ -4,15 +4,13 @@ const urlUsers = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const urlProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const selectSede = document.getElementById('selectSede');
 const inputName = document.getElementById('inputName');
-
 //__________________________INICIO funcion fetch para jalar la data de cohorts_______________________________________//
-
-const viewListCohorts = () => {
-	const cohortsJsonArr = [];
+  const viewListCohorts = () => {
 	fetch(urlCohorts)
 		.then(respuesta => respuesta.json())
-		.then(cohorts => {
+		.then(cohorts => {//cohorts es el documento parseado en este caso es un array de objetos
 			// console.log(cohorts);//cohorts es el array que contiene a todos los cohort
+			//_______________________________Hacer que el cohort se filtre por sede__________________________
 			selectSede.addEventListener('change', () => {
 				let opcionSeleccionadaDeSede = event.target.options[selectSede.selectedIndex];
 				console.log(opcionSeleccionadaDeSede.value);
@@ -25,6 +23,7 @@ const viewListCohorts = () => {
 					}
 				})
 			})
+			//_______________________________Hacer que el cohort se filtre por sede__________________________
 		})
 }
 viewListCohorts();
@@ -35,11 +34,11 @@ const viewListUsers = () => {
 	// selectUsers.innerHTML = "";
 	fetch(urlUsers)
 		.then(res => res.json())
-		.then(users => {
+		.then(users => {//users es el documento parseado en este caso es un array de objetos
 			// console.log(users);//users es el array del Json parseado
 			const arrayDeNombresFiltados=users.filter((user) => {
 				let roleUsers = user.role;
-			 			nameUsers = user.name;
+			 	let		nameUsers = user.name;
 				if (((roleUsers) === 'student') === true) {
 					tableUsers.innerHTML += `
 						<tr>
@@ -49,7 +48,6 @@ const viewListUsers = () => {
 					return nameUsers;
 				}
 			});
-
 			//______________Detectar el nombre que el usuario desea buscar_______________________________________________//
 			inputName.addEventListener('input', (event) => {
 				const valorEscrito = event.target.value;
@@ -57,11 +55,8 @@ const viewListUsers = () => {
 				// console.log(arrayDeNombresFiltados);
 				const alumnaBuscada = arrayDeNombresFiltados.filter((user) => {
 					const nombres = user['name'];
-					
 					return (nombres.toUpperCase().indexOf(valorEscrito.toUpperCase()) !== -1);
-					
 				});
-				console.log(alumnaBuscada);
 				const ulElemento = document.getElementById('listaAlumnaBuscada');
 				ulElemento.innerHTML = "";
 				alumnaBuscada.forEach((user) => {
@@ -70,21 +65,26 @@ const viewListUsers = () => {
 																`
 				});
 			})
-				//______________Detectar el nombre que el usuario desea buscar_______________________________________________//
+			//______________Detectar el nombre que el usuario desea buscar_______________________________________________//
 		});
+		
 }
 viewListUsers();
 //__________________________FIN  de la funcion fetch para jalar la data de users_______________________________________//
 
-//llamando al json de Progress
+//__________________________INICIO de la funcion fetch para jalar la data del progress_______________________________________//
 const viewListProgress = () => {
-	selectProgress.innerHTML = "";
+	// selectProgress.innerHTML = "";
 	fetch(urlProgress)
 		.then(res => res.json())
-		.then(progress => {
-			console.log(progress);
-			console.log(typeof (progress));
+		.then(progress => {//progress es el documento parseado en este caso es un objeto de objetos
+
 
 		});
 }
 // viewListProgress();
+//__________________________FIN de la funcion fetch para jalar la data del progress_______________________________________//
+// Promise.all([viewListCohorts,viewListUsers,viewListProgress])
+// 	.then((values) => {
+// 		userStats = window.getComputedStyle(cohorts,users,progress);
+// 	})

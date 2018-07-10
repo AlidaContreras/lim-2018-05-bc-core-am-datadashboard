@@ -8,66 +8,120 @@
 </head>
 
 <body>
-  <header class="header">
-    <div>
-      <!-- logo de laboradar -->
+       <!-- logo de laboradar -->
       <!-- <img src="../img/LogoLaboRadar.PNG" class="LaboRadar"></img> -->
-      <p>Alejandra Ramirez</p>
-    </div>
-    <div class = divBarraHorizontal>
-      <ul class=barraHorizontal>
-        <li><a href="#">Peru</a></li>
-        <li><a href="#">Brasil</a></li>
-        <li><a href="#">Chile</a></li>
-        <li><a href="#">Mexico</a></li>
-        <li><a href="#">General</a></li>
-        <li><a href="#"> ____________</a></li>
-        <li><a href="#">Español ▼</a></li>
-      </ul>
-    </div>
-  </header>
-  <div class = divBarraVertical>
-  <ul class = ulbarraVertical>
-      <li><a>Estudiantes</a></li>
-      <li><a>Reportes</a></li>
-      <li><a>Cursos</a></li>
-      <li><a>Lecturas, quizzes y ejercicios</a></li>
-    </ul>
-  </div>
-  <main>
-      <div id = "sedeSelectBox">
-          <select value = "hola" id="selectSede">
-            <option value="" disabled selected>Seleccione una Sede</option>
-            <option value="lim" id = "lim">LIM</option>
-            <option value="aqp" id = "aqp">AQP</option>
-            <option value="scl" id = "scl">SCL</option>
-            <option value="gdl" id = "gdl">GDL</option>
-            <option value="cdmx" id = "cdmx">CDMX</option>
-            <option value="spl" id = "spl">SPL</option>
-          </select>
-        </div>
+      <section id="sidebar"> 
+          <div class="white-label">
+          </div> 
+          <div id="sidebar-nav">   
+            <ul>
+              <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+              <li><a href="#"><i class="fa fa-desktop"></i> Estudiantes </a></li>
+              <li><a href="#"><i class="fa fa-usd"></i> Reporte por curso</a></li>
+              <li><a href="#"><i class="fa fa-pencil-square-o"></i> Reporte por Quizzes</a></li>
+            </ul>
+          </div>
+        </section>
+        <section id="content">
+          <div id="header">
+            <div class="header-nav">
+              <div class="menu-button">
+                <!--<i class="fa fa-navicon"></i>-->
+              </div>
+              <div class="nav">
+                <ul>
+                  <li class="nav-settings">
+                    <div class="font-icon"><i class="fa fa-tasks"></i></div>
+                  </li>
+                  <li class="nav-mail">
+                    <div class="font-icon"><i class="fa fa-envelope-o"></i></div>
+                  </li>
+                  <li class="nav-calendar">
+                    <div class="font-icon"><i class="fa fa-calendar"></i></div>
+                  </li>
+                  <li class="nav-chat">
+                    <div class="font-icon"><i class="fa fa-comments-o"></i></div>
+                  </li>
+                  <li class="nav-profile">
+                    <div class="nav-profile-image">
+                      <img src="https://skynet.marketecture.com/user_avatars/258800/Hayley-Helsten.jpg" alt="profile-img" alt="profile image">
+                      <div class="nav-profile-name">Jane Smith<i class="fa fa-caret-down"></i></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-    <select name="selectCohorts" id="selectCohorts"></select>
-     <option value="" disabled selected>Seleccione un Cohort</option>
+          <div>
+              <div id = "sedeSelectBox">
+                  <select value = "hola" id="selectSede">
+                    <option value="" disabled selected>Seleccione una Sede</option>
+                    <option value="lim" id = "lim">LIM</option>
+                    <option value="aqp" id = "aqp">AQP</option>
+                    <option value="scl" id = "scl">SCL</option>
+                    <option value="gdl" id = "gdl">GDL</option>
+                    <option value="cdmx" id = "cdmx">CDMX</option>
+                    <option value="spl" id = "spl">SPL</option>
+                  </select>
+                </div>
+          
+            <select name="selectCohorts" id="selectCohorts"></select>
+             <option value="" disabled selected>Seleccione un Cohort</option>
+            <input id="inputName" >
+              <ul id = "listaAlumnaBuscada">
+                    <li></li>
+              </ul>
+              <table id = tableUsers></table>
+          </div>
 
-    <input id="inputName" >
-      <ul id = "listaAlumnaBuscada">
-            <li></li>
-      </ul>
 
-
-      
-        
-      <!-- <select name="selectUsers" id="selectUsers"></select> -->
-      <table id = tableUsers></table>
-
-
-    
-
-    </div>
-  </main>
+          <div class="content">
+            <div class="content-header">
+              <h1>Dashboard</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="widget-box sample-widget">
+              <div class="widget-header">
+                <h2>Widget Header</h2>
+                <i class="fa fa-cog"></i>
+              </div>
+              <div class="widget-content">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/87118/sample-data-1.png">
+              </div>
+            </div>
+            <div class="widget-box sample-widget">
+              <div class="widget-header">
+                <h2>Widget Header</h2>
+                <i class="fa fa-cog"></i>
+              </div>
+              <div class="widget-content">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/87118/sample-data-1.png">
+              </div>
+            </div>
+            <div class="widget-box sample-widget">
+              <div class="widget-header">
+                <h2>Widget Header</h2>
+                <i class="fa fa-cog"></i>
+              </div>
+              <div class="widget-content">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/87118/sample-data-1.png">
+              </div>
+            </div>
+              <div class="widget-box sample-widget">
+              <div class="widget-header">
+                <h2>Widget Header</h2>
+                <i class="fa fa-cog"></i>
+              </div>
+              <div class="widget-content">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/87118/sample-data-1.png">
+              </div>
+            </div>  
+          </div>
+        </section>
   <script src="main.js"></script>
   <script src="data.js"></script>
 </body>
 
 </html>
+
