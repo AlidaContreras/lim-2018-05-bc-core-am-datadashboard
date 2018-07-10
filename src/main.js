@@ -11,7 +11,7 @@ const inputName = document.getElementById('inputName');
 		.then(cohorts => {//cohorts es el documento parseado en este caso es un array de objetos
 			// console.log(cohorts);//cohorts es el array que contiene a todos los cohort
 			//_______________________________Hacer que el cohort se filtre por sede__________________________
-			selectSede.addEventListener('change', () => {
+			selectSede.addEventListener('change',() => {
 				let opcionSeleccionadaDeSede = event.target.options[selectSede.selectedIndex];
 				console.log(opcionSeleccionadaDeSede.value);
 				selectCohorts.innerHTML = "";
@@ -69,7 +69,7 @@ const viewListUsers = () => {
 		});
 		
 }
-viewListUsers();
+// viewListUsers();
 //__________________________FIN  de la funcion fetch para jalar la data de users_______________________________________//
 
 //__________________________INICIO de la funcion fetch para jalar la data del progress_______________________________________//

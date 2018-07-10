@@ -29,19 +29,20 @@ html, body {
     max-width: 210px;
     padding: 10px;
     min-height: 44px;
-    background: #279BE4;
+    background: #FFE521;
     width: 100%;
     max-height: 44px;
+    outline: 1px solid #333;
   }
   .white-label img {
-    max-height: 43px;
+    max-height: 100%;
   }
   .header-nav {
     min-height: 64px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    background: #279BE4;
+    background: #FFE521;
   }
   .menu-button {
     float: left;
@@ -70,7 +71,7 @@ html, body {
     color: #fff;
   }
   .nav ul li:hover {
-    background: #01A9F0;
+    background: rgb(196, 203, 186);
     color: #fff;
   }
   .user-profile {
@@ -118,7 +119,7 @@ html, body {
     border-right: 1px solid #ccc;
   }
   .nav-profile {
-    background: #0274BD;
+    background: rgb(191, 191, 180);
   }
   .nav-profile-image img {
     width: 39px;
@@ -259,7 +260,7 @@ html, body {
     margin: 0 0 15px 15px;
   }
   .widget-header {
-    background: #279BE4;
+    background: rgb(139, 141, 142);
   }
   .widget-header h2 {
     font-size: 15px;
