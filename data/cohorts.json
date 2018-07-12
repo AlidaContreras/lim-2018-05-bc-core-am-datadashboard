@@ -461,7 +461,7 @@
 		"start": "2018-03-13",
 		"coursesIndex": {
 			"intro": {
-				"title": "Introducción a la programación (con JavaScript)"
+						"title": "Introducción a la programación (con JavaScript)"
 			}
 		},
 		"end": "2018-03-31"
