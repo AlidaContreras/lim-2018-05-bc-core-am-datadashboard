@@ -7,7 +7,7 @@ const selectCohorts = document.getElementById('selectCohorts')
 const inputName = document.getElementById('inputName');
 
 let options = {
-	cohort: null,
+	cohort: 0,
 	cohortData: {
 		users: null,
 		progress: null
@@ -16,13 +16,12 @@ let options = {
 	// orderDirection:,
 	// search:,
 }
-
 //__________________________INICIO funcion fetch para jalar la data de cohorts_______________________________________//
 const viewListCohorts = () => {
 	fetch(urlCohorts)
 		.then(respuesta => respuesta.json())
 		.then(cohorts => {//cohorts es el documento parseado en este caso es un array de objetos
-			
+
 			selectSede.addEventListener('change', () => {
 				let opcionSeleccionadaDeSede = event.target.options[selectSede.selectedIndex];
 				console.log(opcionSeleccionadaDeSede.value);
@@ -34,8 +33,8 @@ const viewListCohorts = () => {
 						return selectCohorts.innerHTML += "<option value='" + idCohort + "'>" + idCohort + "</option>";
 					}
 				})
-					let cohort = cohortsLima.filter((elCohort)=>{
-					if	(elCohort.id === "lim-2018-03-pre-core-pw"){
+				let cohort = cohortsLima.filter((elCohort) => {
+					if (elCohort.id === "lim-2018-03-pre-core-pw") {
 						return (elCohort);
 					}
 				})
@@ -52,7 +51,10 @@ const viewListProgress = () => {
 		.then(res => res.json())
 		.then(progress => {//progress es el documento parseado en este caso es un objeto de objetos
 			options.cohortData.progress = progress;
+			processCohortData(options);
+
 		});
+		
 }
 
 const viewListUsers = () => {
@@ -61,17 +63,14 @@ const viewListUsers = () => {
 		.then(res => res.json())
 		.then(users => {//users es el documento parseado en este caso es un array de objetos
 			options.cohortData.users = users;
-			viewListProgress()
+			viewListProgress();
 		})
 }
 
 selectCohorts.addEventListener('change', () => {
 	if (selectCohorts.value === 'lim-2018-03-pre-core-pw') {
 		viewListUsers();
-		processCohortData(options)
-		
-
-		}
+	}
 	else {
 		console.log('DATA NO EXISTENTE')
 	}
