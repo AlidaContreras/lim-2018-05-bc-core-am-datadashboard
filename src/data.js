@@ -1,22 +1,13 @@
 window.computeUsersStats = (users, progress, courses) => {
 	let dataUsers = users;
 	let dataProgress = progress;
-
-	console.log(options.cohort);
-
-	console.log(users);
-	console.log(dataUsers);
-	console.log(progress);
-	console.log(dataProgress);
-
-
-
 	//1. vamos a filtrar a las alumnas que tiene su role como estudiante
-	let students = dataUsers.filter(user => user.role === 'student');//Aqui me tienen que salir 727 estudiantes
+	//Aqui me tienen que salir 727 estudiantes
 	const usersWithStats = [];
-
+	
+//
 	courses.forEach(cadaCourse => {
-		students.forEach((user) => {
+		dataUsers.forEach((user) => {
 			let percent = 0;
 			let exerciseTotal = 0;
 			let exerciseCompleted = 0;
@@ -27,14 +18,14 @@ window.computeUsersStats = (users, progress, courses) => {
 			let scoreSum = 0;
 			let scoreAvg = 0;
 
+			
 			if ((dataProgress[user.id]) && (dataProgress[user.id]).hasOwnProperty(cadaCourse)) {
 				cadaUnidad = dataProgress[user.id].intro.units;
 				Object.keys(cadaUnidad).forEach((nombreCadaUnidad) => {
 					const parts = cadaUnidad[nombreCadaUnidad].parts
 					Object.keys(parts).forEach((nombreDeParte) => {
 						const part = parts[nombreDeParte];
-
-
+						//
 						if (part.hasOwnProperty('exercises')) {
 							const exercises = part.exercises;
 							Object.keys(exercises).forEach((exerciseName) => {
@@ -72,13 +63,28 @@ window.computeUsersStats = (users, progress, courses) => {
 					return ((completados * 100) / totales);
 				}
 			}
+
+			const percentGeneral = (user) => {
+				let count = 0;//acumular todo el puntaje de %
+				let percentDeCursos = [];
+				courses.map(course => {
+					if (user[course]) {
+						count += user[course]['percent'];
+						percentDeCursos.push(user[courses]['percent']);
+					}
+				});
+				return {
+					percenta: count / courses.length,
+				}
+			}
+
 			const exercisePercent = calculatePercent(exerciseCompleted, exerciseTotal);
 			const readsPercent = calculatePercent(readsCompleted, readsTotal);
 			const quizzesPercent = calculatePercent(quizzesCompleted, quizzesTotal);
 			const userWithStats = {
 				name: user.name,
 				stats: {
-					percent: percent,
+					percent: percentGeneral,
 					exercises: {
 						total: exerciseTotal,
 						completed: exerciseCompleted,
@@ -102,7 +108,7 @@ window.computeUsersStats = (users, progress, courses) => {
 		})
 	})
 	//return userWithSats
-	return usersWithStats
+	return usersWithStats;
 }
 window.sortUsers = (parametros) => {
 
@@ -111,11 +117,11 @@ window.filterUsers = (parametros) => {
 
 }
 window.processCohortData = (options) => {
-	console.log(options);
-
 	let courses = Object.keys(options.cohort.coursesIndex);
-	let showUsers = computeUsersStats(options.cohortData.users, options.cohortData.progress, courses)
-	console.log(showUsers)
+	let students = options.cohortData.users.filter(user => user.role === 'student');
+	let showUsers = computeUsersStats(students, options.cohortData.progress, courses);
+	console.log(showUsers);
+	
 	// users = sortUsers(users,orderBy,orderDirection);
 	// search ? users = filterUsers(users,search) : null;
 }

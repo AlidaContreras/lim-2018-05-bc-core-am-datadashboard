@@ -38,7 +38,7 @@ const viewListCohorts = () => {
 						return (elCohort);
 					}
 				})
-				console.log(cohort[0])
+				// console.log(cohort[0])
 				options.cohort = cohort[0];
 			})
 		})
