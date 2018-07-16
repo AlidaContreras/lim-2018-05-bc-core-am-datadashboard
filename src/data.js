@@ -18,6 +18,7 @@ window.computeUsersStats = (users, progress, courses) => {
 			let scoreAvg = 0;
 
 			if ((dataProgress[user.id]) && (dataProgress[user.id]).hasOwnProperty(cadaCourse)) {
+				percent = dataProgress[user.id].intro.percent;
 				cadaUnidad = dataProgress[user.id].intro.units;
 				Object.keys(cadaUnidad).forEach((nombreCadaUnidad) => {
 					const parts = cadaUnidad[nombreCadaUnidad].parts
@@ -61,29 +62,13 @@ window.computeUsersStats = (users, progress, courses) => {
 					return ((exerciseCompleted * 100) / exerciseTotal);
 				}
 			}
-
-			const percentGeneral = (user) => {
-				let count = 0;//acumular todo el puntaje de %
-				let percentDeCursos = [];
-				courses.map(course => {
-					if (user[course]) {
-						count += user[course]['percent'];
-						percentDeCursos.push(user[courses]['percent']);
-					}
-				});
-				return {
-					percent: count / courses.length,
-				}
-			}
-
 			const exercisePercent = calculatePercent(exerciseCompleted, exerciseTotal);
 			const readsPercent = calculatePercent(readsCompleted, readsTotal);
 			const quizzesPercent = calculatePercent(quizzesCompleted, quizzesTotal);
 			const userWithStats = {
-
+				name: user.name,
 				stats: {
-					name: user.name,
-					percent: percentGeneral,
+					percent: percent,
 					exercises: {
 						total: exerciseTotal,
 						completed: exerciseCompleted,
@@ -92,7 +77,7 @@ window.computeUsersStats = (users, progress, courses) => {
 					reads: {
 						total: readsTotal,
 						completed: readsCompleted,
-						percent: Math.round(readsPercent) //aquí se redondea 
+						percent: Math.round(readsPercent) //aquí se redondea
 					},
 					quizzes: {
 						total: quizzesTotal,
@@ -110,13 +95,13 @@ window.computeUsersStats = (users, progress, courses) => {
 	return usersWithStats;
 }
 window.sortUsers = (parametros) => {
+	
 
 }
 window.filterUsers = (users, search) => {
-
 	const alumnaBuscada = users.filter((user) => {
-		if (user.stats.name !== undefined) {
-			let nombres = user.stats.name;
+		if (user.name !== undefined) {
+			let nombres = user.name;
 			return (nombres.toUpperCase().indexOf(search.toUpperCase()) !== -1);
 		}
 	})
@@ -126,10 +111,7 @@ window.processCohortData = (options) => {
 	let courses = Object.keys(options.cohort.coursesIndex);
 	const students = options.cohortData.users.filter(user => user.role === 'student');
 	const showUsers = computeUsersStats(students, options.cohortData.progress, courses);
-	// console.log(Array.isArray(showUsers));
 	console.log(showUsers);
 	let users = filterUsers(showUsers,options.search);
-	// // users = sortUsers(users,orderBy,orderDirection);
-	// options.search ?  : null;
 	return users;
 }

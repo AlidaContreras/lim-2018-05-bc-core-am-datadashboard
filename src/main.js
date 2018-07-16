@@ -4,7 +4,7 @@ const urlUsers = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const urlProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const selectSede = document.getElementById('selectSede');
 const selectCohorts = document.getElementById('selectCohorts')
-const inputName = document.getElementById('inputName');
+// const inputName = document.getElementById('inputName');
 
 let options = {
 	cohort: 0,
@@ -77,17 +77,19 @@ selectCohorts.addEventListener('change', () => {
 
 // const showStats = () => {
 
-
-	searchButton.addEventListener('keyup', (event) => {
+//input de busqueda filter
+	searchBox.addEventListener('input', (event) => {
 		options.search = event.target.value;
-		console.log(options.search);
-		let guardado = processCohortData(options);//guardado es el array que me devuelve
+		const guardado = processCohortData(options);//guardado es el array que me devuelve
 		console.log(guardado);
+
 		const ulElemento = document.getElementById('listaAlumnaBuscada');
 		ulElemento.innerHTML = "";
 		guardado.forEach((user) => {
 			ulElemento.innerHTML += `
-										<li>${user.stats['name']}${user.stats['exercises']}</li>
+										<li>${user['name']}</li>
+										<li>${user.stats.exercises['total']}</li>
+
 															`
 		});
 
@@ -108,7 +110,6 @@ selectCohorts.addEventListener('change', () => {
 // 		return nameUsers;
 // 	}
 // });
-// //______________Detectar el nombre que el usuario desea buscar_______________________________________________//
 
 
 

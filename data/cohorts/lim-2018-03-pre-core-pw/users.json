@@ -9,7 +9,8 @@
     },
     {
         "id": "04oXrfTxNUbhGtkxNTfw7fhHVgs1",
-           "locale": "es-PE",
+        "name": "Devora Alexandra Miñano Vejarano",
+        "locale": "es-PE",
         "signupCohort": "lim-2018-03-pre-core-pw",
         "timezone": "America/Lima",
         "role": "student"
