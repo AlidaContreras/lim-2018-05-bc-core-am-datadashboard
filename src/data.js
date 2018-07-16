@@ -4,8 +4,7 @@ window.computeUsersStats = (users, progress, courses) => {
 	//1. vamos a filtrar a las alumnas que tiene su role como estudiante
 	//Aqui me tienen que salir 727 estudiantes
 	const usersWithStats = [];
-	
-//
+	//
 	courses.forEach(cadaCourse => {
 		dataUsers.forEach((user) => {
 			let percent = 0;
@@ -18,7 +17,6 @@ window.computeUsersStats = (users, progress, courses) => {
 			let scoreSum = 0;
 			let scoreAvg = 0;
 
-			
 			if ((dataProgress[user.id]) && (dataProgress[user.id]).hasOwnProperty(cadaCourse)) {
 				cadaUnidad = dataProgress[user.id].intro.units;
 				Object.keys(cadaUnidad).forEach((nombreCadaUnidad) => {
@@ -56,11 +54,11 @@ window.computeUsersStats = (users, progress, courses) => {
 					})
 				})
 			}
-			let calculatePercent = (completados, totales) => {
-				if (totales == 0) {
+			let calculatePercent = (exerciseCompleted, exerciseTotal) => {
+				if (exerciseTotal == 0) {
 					return 0;
 				} else {
-					return ((completados * 100) / totales);
+					return ((exerciseCompleted * 100) / exerciseTotal);
 				}
 			}
 
@@ -74,7 +72,7 @@ window.computeUsersStats = (users, progress, courses) => {
 					}
 				});
 				return {
-					percenta: count / courses.length,
+					percent: count / courses.length,
 				}
 			}
 
@@ -82,8 +80,9 @@ window.computeUsersStats = (users, progress, courses) => {
 			const readsPercent = calculatePercent(readsCompleted, readsTotal);
 			const quizzesPercent = calculatePercent(quizzesCompleted, quizzesTotal);
 			const userWithStats = {
-				name: user.name,
+
 				stats: {
+					name: user.name,
 					percent: percentGeneral,
 					exercises: {
 						total: exerciseTotal,
@@ -113,15 +112,24 @@ window.computeUsersStats = (users, progress, courses) => {
 window.sortUsers = (parametros) => {
 
 }
-window.filterUsers = (parametros) => {
+window.filterUsers = (users, search) => {
 
+	const alumnaBuscada = users.filter((user) => {
+		if (user.stats.name !== undefined) {
+			let nombres = user.stats.name;
+			return (nombres.toUpperCase().indexOf(search.toUpperCase()) !== -1);
+		}
+	})
+	return alumnaBuscada;
 }
 window.processCohortData = (options) => {
 	let courses = Object.keys(options.cohort.coursesIndex);
-	let students = options.cohortData.users.filter(user => user.role === 'student');
-	let showUsers = computeUsersStats(students, options.cohortData.progress, courses);
+	const students = options.cohortData.users.filter(user => user.role === 'student');
+	const showUsers = computeUsersStats(students, options.cohortData.progress, courses);
+	// console.log(Array.isArray(showUsers));
 	console.log(showUsers);
-	
-	// users = sortUsers(users,orderBy,orderDirection);
-	// search ? users = filterUsers(users,search) : null;
+	let users = filterUsers(showUsers,options.search);
+	// // users = sortUsers(users,orderBy,orderDirection);
+	// options.search ?  : null;
+	return users;
 }

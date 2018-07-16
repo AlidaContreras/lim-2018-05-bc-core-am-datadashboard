@@ -11,11 +11,11 @@ let options = {
 	cohortData: {
 		users: null,
 		progress: null
-	}
+	},
 	// orderBy:,
 	// orderDirection:,
-	// search:,
-}
+	search: ''
+};
 //__________________________INICIO funcion fetch para jalar la data de cohorts_______________________________________//
 const viewListCohorts = () => {
 	fetch(urlCohorts)
@@ -54,7 +54,6 @@ const viewListProgress = () => {
 			processCohortData(options);
 
 		});
-		
 }
 
 const viewListUsers = () => {
@@ -74,9 +73,27 @@ selectCohorts.addEventListener('change', () => {
 	else {
 		console.log('DATA NO EXISTENTE')
 	}
-
-
 })
+
+// const showStats = () => {
+
+
+	searchButton.addEventListener('keyup', (event) => {
+		options.search = event.target.value;
+		console.log(options.search);
+		let guardado = processCohortData(options);//guardado es el array que me devuelve
+		console.log(guardado);
+		const ulElemento = document.getElementById('listaAlumnaBuscada');
+		ulElemento.innerHTML = "";
+		guardado.forEach((user) => {
+			ulElemento.innerHTML += `
+										<li>${user.stats['name']}${user.stats['exercises']}</li>
+															`
+		});
+
+	})
+
+
 
 // // ESTO ME DEBE PINTAR EN PANTALLA A LAS ESTUDIANTES(SOLO NOMBRES)
 // const arrayDeNombresFiltados = users.filter((user) => {
@@ -92,21 +109,6 @@ selectCohorts.addEventListener('change', () => {
 // 	}
 // });
 // //______________Detectar el nombre que el usuario desea buscar_______________________________________________//
-// inputName.addEventListener('input', (event) => {
-// 	const valorEscrito = event.target.value;
-// 	console.log(valorEscrito);
-// 	// console.log(arrayDeNombresFiltados);
-// 	const alumnaBuscada = arrayDeNombresFiltados.filter((user) => {
-// 		const nombres = user['name'];
-// 		return (nombres.toUpperCase().indexOf(valorEscrito.toUpperCase()) !== -1);
-// 	});
-// 	const ulElemento = document.getElementById('listaAlumnaBuscada');
-// 	ulElemento.innerHTML = "";
-// 	alumnaBuscada.forEach((user) => {
-// 		ulElemento.innerHTML += `
-// 													<li>${user['name']}</li>
-// 													`
-// 	});
-// })
+
 
 

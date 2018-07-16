@@ -5,42 +5,58 @@
   <meta charset="utf-8">
   <title>Data Dashboard</title>
   <link rel="stylesheet" href="style.css" />
-  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
 </head>
 
 <body>
-       
+  <div>
+    <select value="hola" id="selectSede">
+      <option value="" disabled selected>Seleccione una Sede</option>
+      <option value="lim" id="lim">LIM</option>
+      <option value="aqp" id="aqp">AQP</option>
+      <option value="scl" id="scl">SCL</option>
+      <option value="gdl" id="gdl">GDL</option>
+      <option value="cdmx" id="cdmx">CDMX</option>
+      <option value="spl" id="spl">SPL</option>
+    </select>
+    <select name="selectCohorts" id="selectCohorts">
+      <option value="" disabled selected>Seleccione un Cohort</option>
+    </select>
 
-          <div class = 'marienela'>
 
-            <h1>Hola Marienela!!! Esta es tu pagina</h1>
-            <img src="https://scontent.flim4-1.fna.fbcdn.net/v/t1.0-9/35369013_1966548983406391_7299768004449927168_n.jpg?_nc_cat=0&_nc_eui2=AeH5QxveNKzpQhwIExfUuSoinw2If9wyNbJfMq2rvPCsuYnm2GW_CrZdk7q4z7LONcvoxAr-rQslXskqXObju8uaY_3I6V1sDkJAWMsa6giaiB5QKRXDKl-4G6sEKbKUJkU&oh=b385387348d20c0f04411501f4113200&oe=5BD7988C" alt="">
-            <button>Bruja clickea aqui!!</button>
-              <div id = "sedeSelectBox">
-                  <!-- <select value = "hola" id="selectSede">
-                    <option value="" disabled selected>Seleccione una Sede</option>
-                    <option value="lim" id = "lim">LIM</option>
-                    <option value="aqp" id = "aqp">AQP</option>
-                    <option value="scl" id = "scl">SCL</option>
-                    <option value="gdl" id = "gdl">GDL</option>
-                    <option value="cdmx" id = "cdmx">CDMX</option>
-                    <option value="spl" id = "spl">SPL</option>
-                  </select> -->
-                </div>
-          
-            <!-- <select name="selectCohorts" id="selectCohorts">
-             <option value="" disabled selected>Seleccione un Cohort</option>
-            </select> -->
-            <!-- <input id="inputName" >
-              <ul id = "listaAlumnaBuscada"> -->
-                    <!-- <li></li> -->
-              </ul>
-              <table id = "tableUsers"></table>
-          </div>
-        
+
+  <div id="tabla" >
+    <div class="contain2 pb-3">
+      <div id="Filtros" class="d-flex">
+        <div id="buscador" class="w-50 text-center">
+          <p class="mb-2">Alumnas: </p>
+          <input type="text" placeholder="Buscar nombre" id="searchButton">
+          <ul id="listaAlumnaBuscada">
+            <li></li>
+          </ul>
+        </div>
+        </div>
+        <section id="filtOrder" class="w-50 text-center">
+            <p class="mb-2">Filtros: </p>
+          <select id="OrderBy">
+            <option value="-">Ordenar Por ...</option>
+            <option value="name">Nombre</option>
+            <option value="completitud">Completitud</option>
+            <option value="ejercicios">Excercises</option>
+            <option value="lecturas">Lecturas</option>
+            <option value="quizzes">Quizzes</option>
+          </select>
+          <select id="Direction">
+            <option value="-">Ordenar Por ...</option>
+            <option value="Ascendente">Ascendente</option>
+            <option value="Descendente">Descendente</option>
+          </select>
+        </section>
+      </div>
+    </div>
+
   <script src="main.js"></script>
   <script src="data.js"></script>
 </body>
-
 </html>
-
