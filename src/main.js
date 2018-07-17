@@ -5,6 +5,8 @@ const urlProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const selectSede = document.getElementById('selectSede');
 const selectCohorts = document.getElementById('selectCohorts')
 const studentsAll = document.getElementById('studentsAll')
+const selectOfdirection = document.getElementById('selectOfdirection')
+const OrderType = document.getElementById('OrderType')
 // const inputName = document.getElementById('inputName');
 
 let options = {
@@ -13,9 +15,9 @@ let options = {
 		users: null,
 		progress: null
 	},
-	// orderBy:,
-	// orderDirection:,
-	search: ''
+	orderBy:'Nombre',
+	orderDirection:'Ascendente',
+	search: '',
 };
 //__________________________INICIO funcion fetch para jalar la data de cohorts_______________________________________//
 const viewListCohorts = () => {
@@ -53,6 +55,7 @@ const viewListProgress = () => {
 		.then(progress => {//progress es el documento parseado en este caso es un objeto de objetos
 			options.cohortData.progress = progress;
 			processCohortData(options);
+
 			const tableOfEstudents = processCohortData(options);
 			for (let user of tableOfEstudents) {
 				studentsAll.innerHTML +=
@@ -60,10 +63,9 @@ const viewListProgress = () => {
 			`<div>
 			<td id= 'tablestudent'>${user['name']}</td>
 			<td>${user.stats['percent']}</td>
-			<td>${user.stats.exercises['total']}</td>
-			<td>${user.stats.quizzes['completed']}</td>
+			<td>${user.stats.exercises['percent']}</td>
 			<td>${user.stats.quizzes['percent']}</td>
-			<td>${user.stats.reads['completed']}</td>
+			<td>${user.stats.reads['percent']}</td>
 			</div>
 			`;
 			}
@@ -96,15 +98,29 @@ searchBox.addEventListener('input', (event) => {
 	studentsAll.innerHTML = '';
 	guardado.forEach((user) => {
 		studentsAll.innerHTML +=
-		`<div id='showEstudents'>
-		<td id= 'tablestudent'>${user['name']}</td>
+		`
+		<tbody id='showEstudents'>
+		<td >${user['name']}</td>
 		<td>${user.stats['percent']}</td>
 		<td>${user.stats.exercises['total']}</td>
 		<td>${user.stats.quizzes['completed']}</td>
 		<td>${user.stats.quizzes['percent']}</td>
 		<td>${user.stats.reads['completed']}</td>
-		</div>
+		</tbody>
 		`;
 	});
+
+})
+
+selectOfdirection.addEventListener('change',(event)=>{
+	options.selectOfdirection = event.target.value;
+	options.orderBy = OrderType.value;
+
+	const dataOrderBy = processCohortData(options);
+	showEstudents.innerHTML = '';
+	viewListProgress(dataOrderBy);
+
+
+
 
 })

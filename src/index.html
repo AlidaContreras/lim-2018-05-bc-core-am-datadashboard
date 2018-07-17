@@ -24,40 +24,45 @@
       <option value='' disabled selected>Seleccione un Cohort</option>
     </select>
 
-
-
-
     <input type='text' placeholder='Buscar nombre' id='searchBox'>
 
-
-    <select id='OrderBy'>
+    <select id='OrderType'>
       <option value='-'>Ordenar Por ...</option>
       <option value='name'>Nombre</option>
       <option value='completitud'>Completitud</option>
       <option value='ejercicios'>Excercises</option>
-      <option value='lecturas'>Lecturas</option>
       <option value='quizzes'>Quizzes</option>
+      <option value='lecturas'>Lecturas</option>
+      
     </select>
-    <select id='Direction'>
+    <select id='selectOfdirection'>
       <option value='-'>Ordenar Por ...</option>
       <option value='Ascendente'>Ascendente</option>
       <option value='Descendente'>Descendente</option>
     </select>
 
     <!-- DIV QUE CONTIENE A LA TABLA DE ESTUDIANTES -->
-    <div class='table-responsive'  >
+    <div class='table-responsive'>
       <table class='table' id='studentsAll'>
-        <th scope='col'>Estudiante</th>
-        <th scope='col'>Completitud Total % </th>
-        <th scope='col'>Ejercicios Completados</th>
-        <th scope='col'>Quizzes Completados</th>
-        <th scope='col'>Puntuación de Quizzes</th>
-        <th scope='col'>Lecturas Completadas</th>
+        <thead>
+          <tr>
+            <th scope='col'>Estudiante</th>
+            <th scope='col'>Completitud
+              <br> Total (%) </th>
+            <th scope='col'>Ejercicios (%)</th>
+            <th scope='col'>Quizzes (%)</th>
+            <th scope='col'>Lecturas (%)</th>
+          </tr>
+        </thead>
+        <tbody id='showEstudents'>
+
+        </tbody>
+
       </table>
     </div>
-    </section>
+  
   </div>
-  </div>
+  
 
   <script src='main.js'></script>
   <script src='data.js'></script>

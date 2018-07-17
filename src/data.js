@@ -94,10 +94,86 @@ window.computeUsersStats = (users, progress, courses) => {
 	//return userWithSats
 	return usersWithStats;
 }
-window.sortUsers = (parametros) => {
-	
-
+window.sortUsers = (showUsers, orderBy, orderDirection) => {
+	//ordenado segun nombre de estudiantes ASCENDENTE Y DESCENDENTE
+	let userSort;
+	if (orderDirection === 'Ascendente') {
+		if (orderBy === 'Nombre') {
+			userSort = showUsers.sort((a, b) => {
+				return a.name - b.name;
+			})
+		}
+	}
+	if (orderDirection === 'Descendente') {
+		if (orderBy === 'Nombre') {
+			userSort = users.sort((a, b) => {
+				return b.name - a.name;
+			})
+		}
+	}
+	// //ordenado segun COMPLETITUD de estudiantes ASCENDENTE Y DESCENDENTE
+	// if (orderDirection === 'Ascendente') {
+	// 	if (orderBy === 'Completitud') {
+	// 		userSort = users.sort((a, b) => {
+	// 			return a.stats.percent - b.stats.percent;
+	// 		})
+	// 	}
+	// }
+	// if (orderDirection === 'Descendente') {
+	// 	if (orderBy === 'Completitud') {
+	// 		userSort = users.sort((a, b) => {
+	// 			return b.stats.percent - a.stats.percent;
+	// 		})
+	// 	}
+	// }
+	// //ordenado segun Cantidad de ejercicios completados en ASCENDENTE Y DESCENDENTE
+	// if (orderDirection === 'Ascendente') {
+	// 	if (orderBy === 'Excercises') {
+	// 		userSort = users.sort((a, b) => {
+	// 			return a.stats.excercises.total - b.stats.excercises.total;
+	// 		})
+	// 	}
+	// }
+	// if (orderDirection === 'Descendente') {
+	// 	if (orderBy === 'Excercises') {
+	// 		userSort = users.sort((a, b) => {
+	// 			return  b.stats.excercises.total - a.stats.excercises.total;
+	// 		})
+	// 	}
+	// }
+	// //ordenado segun Cantidad de ejercicios completados en ASCENDENTE Y DESCENDENTE
+	// if (orderDirection === 'Ascendente') {
+	// 	if (orderBy === 'Quizzes') {
+	// 		userSort = users.sort((a, b) => {
+	// 			return a.stats.quizzes.total - b.stats.quizzes.total;
+	// 		})
+	// 	}
+	// }
+	// if (orderDirection === 'Descendente') {
+	// 	if (orderBy === 'Quizzes') {
+	// 		userSort = users.sort((a, b) => {
+	// 			return  b.stats.quizzes.total - a.stats.quizzes.total;
+	// 		})
+	// 	}
+	// }
+	// //ordenado segun Cantidad de QUIZZES completados en ASCENDENTE Y DESCENDENTE
+	// if (orderDirection === 'Ascendente') {
+	// 	if (orderBy === 'Lecturas') {
+	// 		userSort = users.sort((a, b) => {
+	// 			return a.stats.reads.total - b.stats.reads.total;
+	// 		})
+	// 	}
+	// }
+	// if (orderDirection === 'Descendente') {
+	// 	if (orderBy === 'Lecturas') {
+	// 		userSort = users.sort((a, b) => {
+	// 			return  b.stats.reads.total - a.stats.reads.total;
+	// 		})
+	// 	}
+	// }
+	return userSort ? userSort : showUsers;
 }
+
 window.filterUsers = (users, search) => {
 	const alumnaBuscada = users.filter((user) => {
 		if (user.name !== undefined) {
@@ -108,11 +184,11 @@ window.filterUsers = (users, search) => {
 	return alumnaBuscada;
 }
 window.processCohortData = (options) => {
-	let courses = Object.keys(options.cohort.coursesIndex);
-	const students = options.cohortData.users.filter(user => user.role === 'student');
-	const showUsers = computeUsersStats(students, options.cohortData.progress, courses);
+	const courses = Object.keys(options.cohort.coursesIndex);
+	let students = options.cohortData.users.filter(user => user.role === 'student');
+	let showUsers = computeUsersStats(students, options.cohortData.progress, courses);
 	console.log(showUsers);
-	let users = filterUsers(showUsers,options.search);
-	return users;
+	showUsers = sortUsers(showUsers, options.orderBy, options.orderDirection);
+	// showUsers = filterUsers(showUsers, options.search);
+	return showUsers;
 }
-// 
