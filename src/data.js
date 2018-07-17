@@ -115,3 +115,4 @@ window.processCohortData = (options) => {
 	let users = filterUsers(showUsers,options.search);
 	return users;
 }
+// 

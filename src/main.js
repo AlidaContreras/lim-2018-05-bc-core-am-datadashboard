@@ -26,7 +26,7 @@ const viewListCohorts = () => {
 			selectSede.addEventListener('change', () => {
 				let opcionSeleccionadaDeSede = event.target.options[selectSede.selectedIndex];
 				console.log(opcionSeleccionadaDeSede.value);
-				selectCohorts.innerHTML = "";
+				selectCohorts.innerHTML = '';
 				let cohortsLima = cohorts.filter((elementCohorts) => {
 					let idCohort = elementCohorts.id;
 					(elementCohorts.id).includes(opcionSeleccionadaDeSede.value);
@@ -35,7 +35,7 @@ const viewListCohorts = () => {
 					}
 				})
 				let cohort = cohortsLima.filter((elCohort) => {
-					if (elCohort.id === "lim-2018-03-pre-core-pw") {
+					if (elCohort.id === 'lim-2018-03-pre-core-pw') {
 						return (elCohort);
 					}
 				})
@@ -47,31 +47,32 @@ const viewListCohorts = () => {
 viewListCohorts();
 
 const viewListProgress = () => {
-	// selectProgress.innerHTML = "";
+	// selectProgress.innerHTML = '';
 	fetch(urlProgress)
 		.then(res => res.json())
 		.then(progress => {//progress es el documento parseado en este caso es un objeto de objetos
 			options.cohortData.progress = progress;
 			processCohortData(options);
-			const tableOfEstudents= processCohortData(options);
-  		for(let user of tableOfEstudents){
-			studentsAll.innerHTML+=
-			//Tabla de estudiantes que se pinta en pantalla al hacer click en el cohort
+			const tableOfEstudents = processCohortData(options);
+			for (let user of tableOfEstudents) {
+				studentsAll.innerHTML +=
+					//Tabla de estudiantes que se pinta en pantalla al hacer click en el cohort
 			`<div>
-			<td id= "tablestudent">${user['name']}</td>
+			<td id= 'tablestudent'>${user['name']}</td>
 			<td>${user.stats['percent']}</td>
 			<td>${user.stats.exercises['total']}</td>
 			<td>${user.stats.quizzes['completed']}</td>
 			<td>${user.stats.quizzes['percent']}</td>
 			<td>${user.stats.reads['completed']}</td>
-			</div>`;
+			</div>
+			`;
 			}
 
 		});
 }
 
 const viewListUsers = () => {
-	// selectUsers.innerHTML = "";
+	// selectUsers.innerHTML = '';
 	fetch(urlUsers)
 		.then(res => res.json())
 		.then(users => {//users es el documento parseado en este caso es un array de objetos
@@ -92,61 +93,18 @@ selectCohorts.addEventListener('change', () => {
 searchBox.addEventListener('input', (event) => {
 	options.search = event.target.value;
 	const guardado = processCohortData(options);//guardado es el array que me devuelve
-	
-	const tableEstudiante = document.getElementById('tableEstudiante');
-	tableEstudiante.innerHTML = "";
-								`	
-								<div class="table-responsive" >
-								<table class="thead-dark" id = 'tableEstudiante'>
-									<thead>
-										<tr>
-											<th scope="col">Estudiante</th>
-											<th scope="col">Completitud Total</th>
-											<th scope="col">Ejercicios Completados</th>
-											<th scope="col">Quizzes Completados</th>
-											<th scope="col">Puntuación de Quizzes</th>
-											<th scope="col">Lecturas Completadas</th>
-										</tr>
-									</thead>
-									`
+	studentsAll.innerHTML = '';
 	guardado.forEach((user) => {
-		tableEstudiante.innerHTML += `
-								<tbody>
-									<tr>
-										<td>${user['name']}</td>
-										<td>${user.stats['percent']}</td>
-										<td>${user.stats.exercises['total']}</td>
-										<td>${user.stats.quizzes['completed']}</td>
-										<td>${user.stats.quizzes['percent']}</td>
-										<td>${user.stats.reads['completed']}</td>
-									</tr>
-									</tbody>
-
-
-										`
+		studentsAll.innerHTML +=
+		`<div id='showEstudents'>
+		<td id= 'tablestudent'>${user['name']}</td>
+		<td>${user.stats['percent']}</td>
+		<td>${user.stats.exercises['total']}</td>
+		<td>${user.stats.quizzes['completed']}</td>
+		<td>${user.stats.quizzes['percent']}</td>
+		<td>${user.stats.reads['completed']}</td>
+		</div>
+		`;
 	});
 
 })
-
-
-
-
-
-
-
-// // ESTO ME DEBE PINTAR EN PANTALLA A LAS ESTUDIANTES(SOLO NOMBRES)
-// const arrayDeNombresFiltados = users.filter((user) => {
-// 	let roleUsers = user.role;
-// 	let nameUsers = user.name;
-// 	if (((roleUsers) === 'student') === true) {
-// 		tableUsers.innerHTML += `
-// 			<tr>
-// 			<td> ${nameUsers}</td>
-// 			</tr>
-// 			`
-// 		return nameUsers;
-// 	}
-// });
-
-
-
