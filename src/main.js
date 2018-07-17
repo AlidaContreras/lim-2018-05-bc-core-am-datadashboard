@@ -75,25 +75,44 @@ selectCohorts.addEventListener('change', () => {
 	}
 })
 
-// const showStats = () => {
+searchBox.addEventListener('input', (event) => {
+	options.search = event.target.value;
+	const guardado = processCohortData(options);//guardado es el array que me devuelve
+	console.log(guardado);
 
-//input de busqueda filter
-	searchBox.addEventListener('input', (event) => {
-		options.search = event.target.value;
-		const guardado = processCohortData(options);//guardado es el array que me devuelve
-		console.log(guardado);
+	const tableEstudiante = document.getElementById('tableEstudiante');
+	tableEstudiante.innerHTML = "";
+	guardado.forEach((user) => {
+		tableEstudiante.innerHTML += `
+								<div class="table-responsive" >
+								<table class="table" id = 'tableEstudiante'>
+									<thead>
+										<tr>
+											<th scope="col">Estudiante</th>
+											<th scope="col">Completitud Total</th>
+											<th scope="col">Ejercicios Completados</th>
+											<th scope="col">Quizzes Completados</th>
+											<th scope="col">Puntuación de Quizzes</th>
+											<th scope="col">Lecturas Completadas</th>
+										</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<th scope="row"></th>
+										<td>${user['name']}</td>
+										<td>${user.stats.exercises['total']}</td>
+										<td></td>
+									</tr>
 
-		const ulElemento = document.getElementById('listaAlumnaBuscada');
-		ulElemento.innerHTML = "";
-		guardado.forEach((user) => {
-			ulElemento.innerHTML += `
-										<li>${user['name']}</li>
-										<li>${user.stats.exercises['total']}</li>
 
-															`
-		});
+										`
+	});
 
-	})
+})
+
+
+
+
 
 
 
