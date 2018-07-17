@@ -4,6 +4,7 @@ const urlUsers = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const urlProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const selectSede = document.getElementById('selectSede');
 const selectCohorts = document.getElementById('selectCohorts')
+const studentsAll = document.getElementById('studentsAll')
 // const inputName = document.getElementById('inputName');
 
 let options = {
@@ -52,6 +53,19 @@ const viewListProgress = () => {
 		.then(progress => {//progress es el documento parseado en este caso es un objeto de objetos
 			options.cohortData.progress = progress;
 			processCohortData(options);
+			const tableOfEstudents= processCohortData(options);
+  		for(let user of tableOfEstudents){
+			studentsAll.innerHTML+=
+			//Tabla de estudiantes que se pinta en pantalla al hacer click en el cohort
+			`<div>
+			<td id= "tablestudent">${user['name']}</td>
+			<td>${user.stats['percent']}</td>
+			<td>${user.stats.exercises['total']}</td>
+			<td>${user.stats.quizzes['completed']}</td>
+			<td>${user.stats.quizzes['percent']}</td>
+			<td>${user.stats.reads['completed']}</td>
+			</div>`;
+			}
 
 		});
 }
@@ -78,14 +92,12 @@ selectCohorts.addEventListener('change', () => {
 searchBox.addEventListener('input', (event) => {
 	options.search = event.target.value;
 	const guardado = processCohortData(options);//guardado es el array que me devuelve
-	console.log(guardado);
-
+	
 	const tableEstudiante = document.getElementById('tableEstudiante');
 	tableEstudiante.innerHTML = "";
-	guardado.forEach((user) => {
-		tableEstudiante.innerHTML += `
+								`	
 								<div class="table-responsive" >
-								<table class="table" id = 'tableEstudiante'>
+								<table class="thead-dark" id = 'tableEstudiante'>
 									<thead>
 										<tr>
 											<th scope="col">Estudiante</th>
@@ -96,13 +108,19 @@ searchBox.addEventListener('input', (event) => {
 											<th scope="col">Lecturas Completadas</th>
 										</tr>
 									</thead>
-									<tbody>
+									`
+	guardado.forEach((user) => {
+		tableEstudiante.innerHTML += `
+								<tbody>
 									<tr>
-										<th scope="row"></th>
 										<td>${user['name']}</td>
+										<td>${user.stats['percent']}</td>
 										<td>${user.stats.exercises['total']}</td>
-										<td></td>
+										<td>${user.stats.quizzes['completed']}</td>
+										<td>${user.stats.quizzes['percent']}</td>
+										<td>${user.stats.reads['completed']}</td>
 									</tr>
+									</tbody>
 
 
 										`

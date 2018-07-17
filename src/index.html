@@ -2,89 +2,69 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
+  <meta charset='utf-8'>
   <title>Data Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-    crossorigin="anonymous">
+  <link rel='stylesheet' href='style.css' />
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css' integrity='sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B'
+    crossorigin='anonymous'>
 </head>
 
 <body>
   <div>
-    <select id="selectSede">
-      <option value="" disabled selected>Seleccione una Sede</option>
-      <option value="lim" id="lim">LIM</option>
-      <option value="aqp" id="aqp">AQP</option>
-      <option value="scl" id="scl">SCL</option>
-      <option value="gdl" id="gdl">GDL</option>
-      <option value="cdmx" id="cdmx">CDMX</option>
-      <option value="spl" id="spl">SPL</option>
+    <select id='selectSede'>
+      <option value='' disabled selected>Seleccione una Sede</option>
+      <option value='lim' id='lim'>LIM</option>
+      <option value='aqp' id='aqp'>AQP</option>
+      <option value='scl' id='scl'>SCL</option>
+      <option value='gdl' id='gdl'>GDL</option>
+      <option value='cdmx' id='cdmx'>CDMX</option>
+      <option value='spl' id='spl'>SPL</option>
     </select>
-    <select name="selectCohorts" id="selectCohorts">
-      <option value="" disabled selected>Seleccione un Cohort</option>
+    <select name='selectCohorts' id='selectCohorts'>
+      <option value='' disabled selected>Seleccione un Cohort</option>
     </select>
 
 
 
-  
-          <input type="text" placeholder="Buscar nombre" id="searchBox">
-         
-           
-          <select id="OrderBy">
-            <option value="-">Ordenar Por ...</option>
-            <option value="name">Nombre</option>
-            <option value="completitud">Completitud</option>
-            <option value="ejercicios">Excercises</option>
-            <option value="lecturas">Lecturas</option>
-            <option value="quizzes">Quizzes</option>
-          </select>
-          <select id="Direction">
-            <option value="-">Ordenar Por ...</option>
-            <option value="Ascendente">Ascendente</option>
-            <option value="Descendente">Descendente</option>
-          </select>
 
-          <!-- DIV QUE CONTIENE A LA TABLA DE ESTUDIANTES -->
-          <div class="table-responsive" >
-          <table class="table" id = 'tableEstudiante'>
-            <thead>
-              <tr>
-                <th scope="col">Estudiante</th>
-                <th scope="col">Completitud Total</th>
-                <th scope="col">Ejercicios Completados</th>
-                <th scope="col">Quizzes Completados</th>
-                <th scope="col">Puntuación de Quizzes</th>
-                <th scope="col">Lecturas Completadas</th>
-              </tr>
-            </thead>
-            <!-- <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody> -->
-          </table>
-        </div >
+    <input type='text' placeholder='Buscar nombre' id='searchBox'>
 
-        </section>
+
+    <select id='OrderBy'>
+      <option value='-'>Ordenar Por ...</option>
+      <option value='name'>Nombre</option>
+      <option value='completitud'>Completitud</option>
+      <option value='ejercicios'>Excercises</option>
+      <option value='lecturas'>Lecturas</option>
+      <option value='quizzes'>Quizzes</option>
+    </select>
+    <select id='Direction'>
+      <option value='-'>Ordenar Por ...</option>
+      <option value='Ascendente'>Ascendente</option>
+      <option value='Descendente'>Descendente</option>
+    </select>
+
+    <!-- DIV QUE CONTIENE A LA TABLA DE ESTUDIANTES -->
+    <div class='table-responsive'  >
+      <table class='table' id='studentsAll'>
+        <th scope='col'>Estudiante</th>
+        <th scope='col'>Completitud Total</th>
+        <th scope='col'>Ejercicios Completados</th>
+        <th scope='col'>Quizzes Completados</th>
+        <th scope='col'>Puntuación de Quizzes</th>
+        <th scope='col'>Lecturas Completadas</th>
+      </table>
+      <div id='showEstudents'>
+        <div class='usersCss' id='studentsAll'></div>
       </div>
     </div>
 
-  <script src="main.js"></script>
-  <script src="data.js"></script>
+    </section>
+  </div>
+  </div>
+
+  <script src='main.js'></script>
+  <script src='data.js'></script>
 </body>
+
 </html>
