@@ -4,68 +4,87 @@
 <head>
   <meta charset='utf-8'>
   <title>Data Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='style.css' />
   <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css' integrity='sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B'
     crossorigin='anonymous'>
 </head>
 
 <body>
-  <div>
-    <select id='selectSede'>
-      <option value='' disabled selected>Seleccione una Sede</option>
-      <option value='lim' id='lim'>LIM</option>
-      <option value='aqp' id='aqp'>AQP</option>
-      <option value='scl' id='scl'>SCL</option>
-      <option value='gdl' id='gdl'>GDL</option>
-      <option value='cdmx' id='cdmx'>CDMX</option>
-      <option value='spl' id='spl'>SPL</option>
-    </select>
-    <select name='selectCohorts' id='selectCohorts'>
-      <option value='' disabled selected>Seleccione un Cohort</option>
-    </select>
-
-    <input type='text' placeholder='Buscar nombre' id='searchBox'>
-
-    <select id='OrderType'>
-      <option value='-'>Ordenar Por ...</option>
-      <option value='name'>Nombre</option>
-      <option value='completitud'>Completitud</option>
-      <option value='ejercicios'>Excercises</option>
-      <option value='quizzes'>Quizzes</option>
-      <option value='lecturas'>Lecturas</option>
-      
-    </select>
-    <select id='selectOfdirection'>
-      <option value='-'>Ordenar Por ...</option>
-      <option value='Ascendente'>Ascendente</option>
-      <option value='Descendente'>Descendente</option>
-    </select>
-
-    <!-- DIV QUE CONTIENE A LA TABLA DE ESTUDIANTES -->
-    <div class='table-responsive'>
-      <table class='table' id='studentsAll'>
-        <thead>
-          <tr>
-            <th scope='col'>Estudiante</th>
-            <th scope='col'>Completitud
-              <br> Total (%) </th>
-            <th scope='col'>Ejercicios (%)</th>
-            <th scope='col'>Quizzes (%)</th>
-            <th scope='col'>Lecturas (%)</th>
-          </tr>
-        </thead>
-        <tbody id='showEstudents'>
-
-        </tbody>
-
-      </table>
+  <header>
+    <div class='container'>
+      <h1>Alejandra Ramirez</h1>
     </div>
-  
-  </div>
-  
 
+    <nav>
+      <select id='selectSede'>
+        <option value='' disabled selected>Seleccione una Sede</option>
+        <option value='lim' id='lim'>LIM</option>
+        <option value='aqp' id='aqp'>AQP</option>
+        <option value='scl' id='scl'>SCL</option>
+        <option value='gdl' id='gdl'>GDL</option>
+        <option value='cdmx' id='cdmx'>CDMX</option>
+        <option value='spl' id='spl'>SPL</option>
+      </select>
+      <select name='selectCohorts' id='selectCohorts'>
+        <option value='' disabled selected>Seleccione un Cohort</option>
+      </select>
+
+      <input type='text' placeholder='Buscar nombre' id='searchBox'>
+
+      <select id='OrderType'>
+      
+        <option value='name'>Nombre</option>
+        <option value='completitud'>Completitud</option>
+        <option value='ejercicios'>Excercises</option>
+        <option value='quizzes'>Quizzes</option>
+        <option value='lecturas'>Lecturas</option>
+
+      </select>
+      <select id='selectOfdirection'>
+ 
+        <option value='Ascendente'>Ascendente</option>
+        <option value='Descendente'>Descendente</option>
+      </select>
+    </nav>
+
+  </header>
+  <div class='container'>
+  <section class="main row">
+    
+      <article class="col-md-9">
+        <!-- DIV QUE CONTIENE A LA TABLA DE ESTUDIANTES -->
+        <div class='table-responsive'>
+          <table class='table' id='studentsAll'>
+            <thead>
+              <tr>
+                <th scope='col'>Estudiante</th>
+                <th scope='col'>Completitud
+                  <br> Total (%) </th>
+                <th scope='col'>Ejercicios (%)</th>
+                <th scope='col'>Quizzes (%)</th>
+                <th scope='col'>Lecturas (%)</th>
+              </tr>
+            </thead>
+            <tbody id='showEstudents'>
+
+            </tbody>
+          </table>
+        </div>
+      </article>
+    
+    <aside class = "col-md-3">
+      <p> edwefqewrferfcreferecfedeceredwefqewrferfcreferecfedeceredwef qewrferfcreferecfedeceredwefqewrferfcreferecfedeceredwefqewrf
+      erfcreferecfedeceredwefqewrferfcreferecfedecer edwefqewrferfcreferecfedeceredwefqewrferfcreferecfedeceredwef qewrferfcreferecfedeceredwefqewrferfcreferecfedeceredwefqewrf
+      erfcreferecfedeceredwefqewrferfcreferecfedecer</p>
+    </aside>
+  </section>
+</div>
   <script src='main.js'></script>
   <script src='data.js'></script>
 </body>
 
 </html>
+
+
+
