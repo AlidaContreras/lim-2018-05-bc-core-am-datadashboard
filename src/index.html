@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <title>Data Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Dashboard</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
     crossorigin="anonymous">
+  <link rel="../img/general.PNG" href="../img/general.PNG">
 </head>
 
 <body>
   <header>
-    <div class="container">
-      <h1>Alejandra Ramirez</h1>
-    </div>
-
-    <nav>
+    <img class="user" src=https://files.slack.com/files-pri/T0NNB6T0R-FBT24E0H1/alejandra_foto.jpg alt="Foto de perfil">
+    <h1 class = "nameUser">Alejandra Ramirez</h1>
+    <nav class = "navigation" >
       <select id="selectSede">
         <option value="" disabled selected>Seleccione una Sede</option>
         <option value="lim" id="lim">LIM</option>
@@ -33,58 +32,55 @@
       <input type="text" placeholder="Buscar nombre" id="searchBox">
 
       <select id="OrderType">
-      
         <option value="name">Nombre</option>
         <option value="completitud">Completitud</option>
         <option value="ejercicios">Excercises</option>
         <option value="quizzes">Quizzes</option>
         <option value="lecturas">Lecturas</option>
-
       </select>
+
       <select id="selectOfdirection">
- 
         <option value="Ascendente">Ascendente</option>
         <option value="Descendente">Descendente</option>
       </select>
     </nav>
+  </header>  
+    <!-- DIV QUE CONTIENE A LA TABLA DE ESTUDIANTES -->
+    <section class="laTabla">
+    <div class="table-responsive  ">
+      <table class="table" id="studentsAll">
+        <thead>
+          <tr>
+            <th scope="col">Estudiante</th>
+            <th scope="col">Completitud
+              <br> Total (%) </th>
+            <th scope="col">Ejercicios (%)</th>
+            <th scope="col">Quizzes (%)</th>
+            <th scope="col">Lecturas (%)</th>
+          </tr>
+        </thead>
+        <tbody id="showEstudents">
 
-  </header>
-  <div class="container">
-  <section class="main row">
-    
-      <article class="col-md-9">
-        <!-- DIV QUE CONTIENE A LA TABLA DE ESTUDIANTES -->
-        <div class="table-responsive">
-          <table class="table" id="studentsAll">
-            <thead>
-              <tr>
-                <th scope="col">Estudiante</th>
-                <th scope="col">Completitud
-                  <br> Total (%) </th>
-                <th scope="col">Ejercicios (%)</th>
-                <th scope="col">Quizzes (%)</th>
-                <th scope="col">Lecturas (%)</th>
-              </tr>
-            </thead>
-            <tbody id="showEstudents">
-
-            </tbody>
-          </table>
-        </div>
-      </article>
-    
-    <aside class = "col-md-3">
-      <p> edwefqewrferfcreferecfedeceredwefqewrferfcreferecfedeceredwef qewrferfcreferecfedeceredwefqewrferfcreferecfedeceredwefqewrf
-      erfcreferecfedeceredwefqewrferfcreferecfedecer edwefqewrferfcreferecfedeceredwefqewrferfcreferecfedeceredwef qewrferfcreferecfedeceredwefqewrferfcreferecfedeceredwefqewrf
-      erfcreferecfedeceredwefqewrferfcreferecfedecer</p>
-    </aside>
+        </tbody>
+      </table>
+    </div>
   </section>
-</div>
+    <section class ="sidebar"> 
+      <div class ="sidebar-nav">   
+            <ul>
+              <li class="active"><a href="#"><i class="fa fa-dashboard"></i> ESTUDIANTES</a></li>
+              <li><a href="#"><i class="fa fa-desktop"></i> REPORTES</a></li>
+              <li><a href="#"><i class="fa fa-usd"></i> CURSOS</a></li>
+              <li><a href="#"><i class="fa fa-pencil-square-o"></i> LECTURAS</a></li>
+              <li><a href="#"><i class="fa fa-sitemap"></i> QUIZZES</a></li>
+              <li><a href="#"><i class="fa fa-line-chart"></i> EJERCICIOS</a></li>
+              <li><a href="#"><i class="fa fa-comments-o"></i>SQUADS </a></li>
+              <li><a href="#"><i class="fa fa-map-marker"></i> JEDIS </a></li>     
+              <li><a href="#"><i class="fa fa-users"></i> COACHS</a></li>
+             </ul>
+        </div>
+    </section>
   <script src="main.js"></script>
   <script src="data.js"></script>
 </body>
-
 </html>
-
-
-

@@ -247,16 +247,15 @@ describe('data', () => {
       orderDirection: 'Ascendente',
       search: '',
     };
-    // it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter', () => {
-    //   const processed = processCohortData(options);
-    //   assert.deepEqual(processed[0].name, 'ADRIANA VIZCARRA PAITÁN');
-    //   options.search = 'rojas';
-    //   assert.deepEqual(processCohortData(options)[0].name, 'ANA PAIMA ROJAS');
-    //   options.orderBy = 'name';
-    //   options.orderDirection = 'Descendente';
-    //   assert.deepEqual(processCohortData(options)[0].name, 'OLGA IBETTS SINCHEZ ROJAS')
-
-    // });
+    it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter', () => {
+      const processed = processCohortData(options);
+      assert.deepEqual(processed[0].name, 'ADRIANA VIZCARRA PAITÁN');
+      options.search = 'rojas';
+      assert.deepEqual(processCohortData(options)[0].name, 'ANA PAIMA ROJAS');
+      options.orderBy = 'ejercicios';
+      options.orderDirection = 'Descendente';
+      assert.deepEqual(processCohortData(options)[0].name, 'LUCIA NATALIA HUAPAYA ROJAS')
+    });
   });
 
 });
