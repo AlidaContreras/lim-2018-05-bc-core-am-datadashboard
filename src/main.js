@@ -119,10 +119,4 @@ selectOfdirection.addEventListener('change',(event)=>{
 	muestra(guardado);
 })
 
-let calculatePercent = (exerciseCompleted, exerciseTotal) => {
-	if (exerciseTotal == 0) {
-		return 0;
-	} else {
-		return ((exerciseCompleted * 100) / exerciseTotal);
-	}
-}
+

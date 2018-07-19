@@ -2,7 +2,7 @@ window.computeUsersStats = (users, progress, courses) => {
 	//1. vamos a filtrar a las alumnas que tiene su role como estudiante
 	//Aqui me tienen que salir 727 estudiantes
 	const usersWithStats = [];
-		courses.forEach(cadaCourse => {
+	courses.forEach(cadaCourse => {
 		users.forEach((user) => {
 			let percent = 0;
 			let exerciseTotal = 0;
@@ -13,7 +13,6 @@ window.computeUsersStats = (users, progress, courses) => {
 			let quizzesCompleted = 0;
 			let scoreSum = 0;
 			let scoreAvg = 0;
-
 			if ((progress[user.id]) && (progress[user.id]).hasOwnProperty(cadaCourse)) {
 				percent = progress[user.id][cadaCourse].percent;
 				cadaUnidad = progress[user.id][cadaCourse].units;
@@ -21,7 +20,6 @@ window.computeUsersStats = (users, progress, courses) => {
 					const parts = cadaUnidad[nombreCadaUnidad].parts
 					Object.keys(parts).forEach((nombreDeParte) => {
 						const part = parts[nombreDeParte];
-						//
 						if (part.hasOwnProperty('exercises')) {
 							const exercises = part.exercises;
 							Object.keys(exercises).forEach((exerciseName) => {
@@ -52,10 +50,9 @@ window.computeUsersStats = (users, progress, courses) => {
 					})
 				})
 			}
-		
-			const exercisePercent = calculatePercent(exerciseCompleted, exerciseTotal);
-			const readsPercent = calculatePercent(readsCompleted, readsTotal);
-			const quizzesPercent = calculatePercent(quizzesCompleted, quizzesTotal);
+			const exercisePercent = exerciseTotal ? Math.round(exerciseCompleted*100/ exerciseTotal) : exerciseTotal;
+			const readsPercent = readsTotal ? Math.round(readsCompleted*100/ readsTotal) : readsTotal;
+			const quizzesPercent = quizzesTotal ? Math.round(quizzesCompleted *100/quizzesTotal) : quizzesTotal ;
 			const userWithStats = {
 				name: user.name.toUpperCase(),
 				stats: {
@@ -82,116 +79,88 @@ window.computeUsersStats = (users, progress, courses) => {
 			usersWithStats.push(userWithStats);
 		})
 	})
-	//return userWithSats
 	return usersWithStats;
 }
 window.sortUsers = (users, orderBy, orderDirection) => {
 	let userSort;
 	//ordenado segun nombre de estudiantes ASCENDENTE Y DESCENDENTE
-
-
-  if (orderBy == 'name') {
-   userSort = users.sort((a, b) => {
-    if (a.name > b.name) {
-      return 1
-  } else if (a.name < b.name) {
-      return -1
-  }
-      return 0
-  });
-
-    if (orderDirection == 'Ascendente'){
-      return userSort;
-    } else if (orderDirection == 'Descendente') {
-      
-      return userSort.reverse();
-    }
-
-  };
-
-  if (orderBy == 'completitud') {
-	userSort = users.sort((a, b) => {
-	 if (a.stats.percent < b.stats.percent) {
-	   return 1
-   } else if (a.stats.percent > b.stats.percent){
-	   return -1
-   }
-	   return 0
-   });
- 
-	 if (orderDirection == 'Ascendente'){
-	   return userSort;
-	 } else if (orderDirection == 'Descendente') {
-	   
-	   return userSort.reverse();
-	 }
- 
-   };
-
-   if (orderBy == 'ejercicios') {
-	userSort = users.sort((a, b) => {
-	 if (a.stats.exercises.percent < b.stats.exercises.percent ) {
-	   return 1
-   } else if (a.stats.exercises.percent  > b.stats.exercises.percent ){
-	   return -1
-   }
-	   return 0
-   });
- 
-	 if (orderDirection == 'Ascendente'){
-	   return userSort;
-	 } else if (orderDirection == 'Descendente') {
-	   
-	   return userSort.reverse();
-	 }
- 
-   };
-
-   if (orderBy == 'quizzes') {
-	userSort = users.sort((a, b) => {
-	 if (a.stats.quizzes.percent < b.stats.quizzes.percent ) {
-	   return 1
-   } else if (a.stats.quizzes.percent  > b.stats.quizzes.percent ){
-	   return -1
-   }
-	   return 0
-   });
- 
-	 if (orderDirection == 'Ascendente'){
-	   return userSort;
-	 } else if (orderDirection == 'Descendente') {
-	   
-	   return userSort.reverse();
-	 }
- 
-   };
-   if (orderBy == 'lecturas') {
-	userSort = users.sort((a, b) => {
-	 if (a.stats.reads.percent < b.stats.reads.percent ) {
-	   return 1
-   } else if (a.stats.reads.percent  > b.stats.reads.percent ){
-	   return -1
-   }
-	   return 0
-   });
- 	 if (orderDirection == 'Ascendente'){
-	   return userSort;
-	 } else if (orderDirection == 'Descendente') {
-	   
-	   return userSort.reverse();
-	 }
-    };
-
-   
-
-
-console.log(users);
-
-
-return userSort;
-	
+	if (orderBy == 'name') {
+		userSort = users.sort((a, b) => {
+			if (a.name > b.name) {
+				return 1
+			} else if (a.name < b.name) {
+				return -1
+			}
+			return 0
+		});
+		if (orderDirection == 'Ascendente') {
+			return userSort;
+		} else if (orderDirection == 'Descendente') {
+			return userSort.reverse();
+		}
+	};
+	if (orderBy == 'completitud') {
+		userSort = users.sort((a, b) => {
+			if (a.stats.percent < b.stats.percent) {
+				return 1
+			} else if (a.stats.percent > b.stats.percent) {
+				return -1
+			}
+			return 0
+		});
+		if (orderDirection == 'Ascendente') {
+			return userSort;
+		} else if (orderDirection == 'Descendente') {
+			return userSort.reverse();
+		}
+	};
+	if (orderBy == 'ejercicios') {
+		userSort = users.sort((a, b) => {
+			if (a.stats.exercises.percent < b.stats.exercises.percent) {
+				return 1
+			} else if (a.stats.exercises.percent > b.stats.exercises.percent) {
+				return -1
+			}
+			return 0
+		});
+		if (orderDirection == 'Ascendente') {
+			return userSort;
+		} else if (orderDirection == 'Descendente') {
+			return userSort.reverse();
+		}
+	};
+	if (orderBy == 'quizzes') {
+		userSort = users.sort((a, b) => {
+			if (a.stats.quizzes.percent < b.stats.quizzes.percent) {
+				return 1
+			} else if (a.stats.quizzes.percent > b.stats.quizzes.percent) {
+				return -1
+			}
+			return 0
+		});
+		if (orderDirection == 'Ascendente') {
+			return userSort;
+		} else if (orderDirection == 'Descendente') {
+			return userSort.reverse();
+		}
+	};
+	if (orderBy == 'lecturas') {
+		userSort = users.sort((a, b) => {
+			if (a.stats.reads.percent < b.stats.reads.percent) {
+				return 1
+			} else if (a.stats.reads.percent > b.stats.reads.percent) {
+				return -1
+			}
+			return 0
+		});
+		if (orderDirection == 'Ascendente') {
+			return userSort;
+		} else if (orderDirection == 'Descendente') {
+			return userSort.reverse();
+		}
+	};
+	return userSort;
 }
-
 window.filterUsers = (users, search) => {
 	const alumnaBuscada = users.filter((user) => {
 		if (user.name !== undefined) {
@@ -202,7 +171,6 @@ window.filterUsers = (users, search) => {
 	return alumnaBuscada;
 }
 window.processCohortData = (options) => {
-	
 	const courses = Object.keys(options.cohort.coursesIndex);
 	let showUsers;
 	let students = options.cohortData.users.filter(user => user.role === 'student');
@@ -211,7 +179,6 @@ window.processCohortData = (options) => {
 	showUsers = filterUsers(showUsers, options.search);
 	console.log(showUsers);
 	return showUsers;
-
 }
 //user es la data en bruto obtenida del JSON la que tiene 735 estudiantes
 //dataUser es la copia de user(735) con la que trabajamos en este doc para no afectar la referencia
