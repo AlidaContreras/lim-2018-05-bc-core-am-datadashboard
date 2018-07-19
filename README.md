@@ -2,7 +2,7 @@
 ## User Experience Design
 ### 1) Definición del producto
 #### Principales usuarios:
-Nuestros principales usuarios son los Training Managers(TMs) de laboratoria los cuales analizan los datos de progreso de las estudiantes con la finalidad de apoyarlas en su aprendizaje.
+Nuestros principales usuarios son los Training Managers(TMs) de laboratoria los cuales analizan los datos de progreso de las estudiantes con la finalidad de apoyarlas en su aprendizaje y ver el desarrollo de habilidades tech en el tiempo de bootcamp.
 
 #### Objetivos de los usuarios en relación al producto:
 Obtener los datos de las alumnas de una manera ágil y sencilla para poder realizar el seguimiento correspondiente a su avance academico.

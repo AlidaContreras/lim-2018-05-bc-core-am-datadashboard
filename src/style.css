@@ -49,7 +49,8 @@ a {
   border-right-style: solid;
   border-color: #fff;
   cursor: pointer;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ 
 }
 .sidebar-nav ul li a {
   color: #C2C2C2;
