@@ -220,15 +220,13 @@ describe('data', () => {
         "id": "LZZiC91B4NddpaPTBJ1XpT9Ox8V2",
         "name": "Dorelly", "locale": "es-PE",
         "timezone": "America/Lima", "role": "student"
-      }
-      ];
+      }];
       const dalia = [
         {
           "id": "rosNOO9dNQQDo4TlClcMiFHEIfy2",
           "name": "Dalia", "locale": "es-PE",
           "timezone": "America/Lima", "role": "student"
-        }
-      ]
+        }];
       assert.deepEqual(window.filterUsers(array, "Dorelly"), dorelly);
       assert.deepEqual(window.filterUsers(array, "Dalia"), dalia);
     });
