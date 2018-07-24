@@ -23,6 +23,7 @@ let options = {
 	orderDirection:'Ascendente',
 	search: '',
 };
+
 //__________________________INICIO funcion fetch para jalar la data de cohorts_______________________________________//
 const viewListCohorts = () => {
 	fetch(urlCohorts)
@@ -75,7 +76,7 @@ selectSede.addEventListener('change', () => {
 	})
 
 	const muestra = (estudiantes) => {
-		for (let user of estudiantes) {
+		for (let user of estudiantes) { 
 			studentsAll.innerHTML +=
 				//Tabla de estudiantes que se pinta en pantalla al hacer click en el cohort
 		`<div>

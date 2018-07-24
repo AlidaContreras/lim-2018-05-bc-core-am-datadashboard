@@ -172,6 +172,7 @@ window.filterUsers = (users, search) => {
 }
 window.processCohortData = (options) => {
 	const courses = Object.keys(options.cohort.coursesIndex);
+	console.log(courses)
 	let showUsers;
 	let students = options.cohortData.users.filter(user => user.role === 'student');
 	showUsers = computeUsersStats(students, options.cohortData.progress, courses);
